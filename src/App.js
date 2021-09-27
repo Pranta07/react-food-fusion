@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [text, setText] = useState("");
+    const handleSearch = (ev) => {
+        const searchText = ev.target.value;
+        setText(searchText);
+    };
+
+    return (
+        <div>
+            <Header handleSearch={handleSearch}></Header>
+            <Main searchText={text}></Main>
+        </div>
+    );
 }
 
 export default App;
