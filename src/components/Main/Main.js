@@ -16,6 +16,7 @@ const Main = (props) => {
 
     return (
         <Container>
+            <h4 className="text-center mt-3">Grab Your Meal Now!</h4>
             <Row className="my-5">
                 <Col>
                     <Row xs={1} sm={2} md={3} lg={4} className="g-4">
