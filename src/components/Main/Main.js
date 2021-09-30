@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import Meal from "../Meal/Meal";
 
 const Main = (props) => {
@@ -14,16 +15,17 @@ const Main = (props) => {
     }, [searchText]);
 
     return (
-        <div className="m-5 row">
-            <div className="col-9">
-                <div className="row row-cols-lg-4 g-4">
-                    {meals.map((meal) => (
-                        <Meal key={meal.idMeal} meal={meal}></Meal>
-                    ))}
-                </div>
-            </div>
-            <div className="col-3"></div>
-        </div>
+        <Container>
+            <Row className="my-5">
+                <Col>
+                    <Row xs={1} sm={2} md={3} lg={4} className="g-4">
+                        {meals?.map((meal) => (
+                            <Meal key={meal?.idMeal} meal={meal}></Meal>
+                        ))}
+                    </Row>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 

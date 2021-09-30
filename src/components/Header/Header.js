@@ -1,70 +1,89 @@
 import React from "react";
+import {
+    Container,
+    Form,
+    FormControl,
+    Nav,
+    Navbar,
+    Button,
+    Stack,
+} from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import logo from "../../logo.jpg";
 const Header = (props) => {
     const { handleSearch } = props;
     return (
-        <nav className="px-5 navbar navbar-expand-lg navbar-dark bg-dark">
-            <div className="container-fluid">
-                <a className="navbar-brand fw-bold" href="/brand">
-                    <img src={logo} alt="" width="40" height="40" />
-                    {" Food Fusion"}
-                </a>
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarScroll"
-                    aria-controls="navbarScroll"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarScroll">
-                    <ul
-                        className="my-2 navbar-nav me-auto my-lg-0 navbar-nav-scroll"
-                        // style={{--bs-scroll-height: 100px}}
+        <Navbar bg="dark" variant="dark px-5" expand="lg">
+            <Container fluid>
+                <Navbar.Brand href="#home" className="fw-bold text-warning">
+                    <img
+                        alt=""
+                        src={logo}
+                        width="30"
+                        height="30"
+                        className="d-inline-block align-top"
+                    />{" "}
+                    Food Fusion
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="navbarScroll" />
+                <Navbar.Collapse id="navbarScroll">
+                    <Nav
+                        className="me-auto my-2 my-lg-0"
+                        style={{ maxHeight: "100px" }}
+                        navbarScroll
                     >
-                        <li className="nav-item">
-                            <a
-                                className="nav-link active"
-                                aria-current="page"
-                                href="/home"
+                        <Stack direction="horizontal" gap={3}>
+                            <NavLink
+                                to="/home"
+                                activeStyle={{
+                                    fontWeight: "bold",
+                                    color: "white",
+                                }}
                             >
                                 Home
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link active" href="/menu">
+                            </NavLink>
+                            <NavLink
+                                to="/menu"
+                                activeStyle={{
+                                    fontWeight: "bold",
+                                    color: "white",
+                                }}
+                            >
                                 Menu
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link active" href="/orders">
+                            </NavLink>
+                            <NavLink
+                                to="/orders"
+                                activeStyle={{
+                                    fontWeight: "bold",
+                                    color: "white",
+                                }}
+                            >
                                 Orders
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link active" href="/about">
-                                About us
-                            </a>
-                        </li>
-                    </ul>
-                    <form className="d-flex">
-                        <input
+                            </NavLink>
+                            <NavLink
+                                to="/about"
+                                activeStyle={{
+                                    fontWeight: "bold",
+                                    color: "white",
+                                }}
+                            >
+                                About
+                            </NavLink>
+                        </Stack>
+                    </Nav>
+                    <Form className="d-flex">
+                        <FormControl
                             onChange={handleSearch}
-                            className="form-control me-2"
                             type="search"
                             placeholder="Search"
+                            className="me-2"
                             aria-label="Search"
                         />
-                        <button className="btn btn-warning" type="submit">
-                            Search
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </nav>
+                        <Button variant="btn btn-warning">Search</Button>
+                    </Form>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 };
 

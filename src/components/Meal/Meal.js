@@ -1,28 +1,40 @@
 import React from "react";
+import { Card, Col } from "react-bootstrap";
+import { useHistory } from "react-router";
 
 const Meal = (props) => {
     const { meal } = props;
-    const { strMealThumb, strCategory, strMeal, strArea } = meal;
+    const { idMeal, strMealThumb, strCategory, strMeal, strArea } = meal;
+
+    const history = useHistory();
+    const handleDetails = () => {
+        history.push(`/meal/${idMeal}`);
+    };
 
     return (
-        <div className="col">
-            <div className="text-center border-0 shadow card h-100">
-                <img src={strMealThumb} className="card-img-top" alt="..." />
-                <div className="card-body">
-                    <h5 className="card-title">{strMeal}</h5>
-                    <p className="text-warning fw-bold">
-                        <span className="text-dark">Category:</span>{" "}
+        <Col>
+            <Card className="text-center border-0 shadow h-100">
+                <Card.Img variant="top" src={strMealThumb} />
+                <Card.Body>
+                    <Card.Title>{strMeal}</Card.Title>
+                    <Card.Text className="text-warning fw-bold">
+                        <span className="text-dark">Category: </span>
                         {strCategory}
-                    </p>
-                    <p className="text-warning fw-bold">
-                        <span className="text-dark">Area:</span> {strArea}
-                    </p>
-                </div>
-                <button id="button-details" className="m-2 btn btn-warning">
-                    Add To Cart
+                    </Card.Text>
+                    <Card.Text className="text-warning fw-bold">
+                        <span className="text-dark">Area: </span>
+                        {strArea}
+                    </Card.Text>
+                </Card.Body>
+                <button
+                    onClick={handleDetails}
+                    id="button-details"
+                    className="m-2 btn btn-warning"
+                >
+                    Details
                 </button>
-            </div>
-        </div>
+            </Card>
+        </Col>
     );
 };
 

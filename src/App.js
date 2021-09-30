@@ -1,7 +1,11 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
+import Home from "./components/Home/Home";
 import Main from "./components/Main/Main";
+import MealDetails from "./components/MealDetails/MealDetails";
 
 function App() {
     const [text, setText] = useState("");
@@ -11,10 +15,23 @@ function App() {
     };
 
     return (
-        <div>
-            <Header handleSearch={handleSearch}></Header>
-            <Main searchText={text}></Main>
-        </div>
+        <Router>
+            <Header handleSearch={handleSearch} />
+            <Switch>
+                <Route exact path="/">
+                    <Home />
+                </Route>
+                <Route exact path="/home">
+                    <Home />
+                </Route>
+                <Route exact path="/menu">
+                    <Main searchText={text}></Main>
+                </Route>
+                <Route exact path="/meal/:id">
+                    <MealDetails></MealDetails>
+                </Route>
+            </Switch>
+        </Router>
     );
 }
 
